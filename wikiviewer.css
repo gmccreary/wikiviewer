@@ -1,0 +1,61 @@
+.body {
+  background-repeat: no-repeat;
+}
+#box {
+  margin: auto;
+  margin-top: 25%;
+  border: 1.4px solid black;
+  width: 35%;
+  padding: 7px;
+  background: rgb(225, 225, 225, .80);
+  border-radius: 25px;
+  box-shadow: 1.2px 1.2px black;
+  
+}
+
+.searchbar {
+  margin: auto;
+  display: inline;  
+}
+
+#searchicon:hover {
+ color: gray; 
+}
+input[type=search] {
+    width: 90%;
+    
+}
+
+
+
+.results {
+  margin: auto;
+  width: 40%;
+  padding: 10px;  
+  color: black;
+  text-align: left;
+  border: 1.4px solid black;
+  background: rgb(225, 225, 225, .90);
+  border-radius: 10px;
+  animation: drift .75s;
+  margin-top: 40px
+}
+
+.element {
+  animation-name: drift;
+  animation-duration: 1s;
+}
+
+@keyframes drift {
+  0% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 40px;
+  }
+}
+
+.searchmove {
+  top-margin: 5%;
+  transistion: 1s;
+}
