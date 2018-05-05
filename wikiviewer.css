@@ -38,7 +38,8 @@ input[type=search] {
   background: rgb(225, 225, 225, .90);
   border-radius: 10px;
   animation: drift .75s;
-  margin-top: 40px
+  margin-top: 40px;
+  display: block;
 }
 
 .element {
@@ -59,3 +60,12 @@ input[type=search] {
   top-margin: 5%;
   transistion: 1s;
 }
+
+.newLink {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
