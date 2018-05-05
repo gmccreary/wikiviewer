@@ -2,7 +2,8 @@
 //turns search icon into a button that grabs the input in the searchbar
 
 var count = 0;
-document.getElementById("searchicon").addEventListener("click", function() {
+
+document.getElementById("searchicon").addEventListener("click", function websiteOperation(){
   
   count++;
   // stores the searchbar input in a variable called searchInput
@@ -24,38 +25,43 @@ document.getElementById("searchicon").addEventListener("click", function() {
       //parses JSON string to useable data and stores in constant myDataObject
       let myDataObject = JSON.parse(xhr.responseText);
 
-      //creates new HTML elements for each result returned by the wikipedia API searc
- function addElement() {
+      //creates new HTML elements for each result returned by the wikipedia API search
+ function addSearchResults() {
    for (let x = 0; x < myDataObject[1].length; x++) {
-     let newDiv = document.createElement("div");
+     let newSpan = document.createElement("span");
      let newLink = document.createElement("a");
-     newDiv.className += "results";
+     newSpan.className += "results";
      newLink.className += "newLink";
-     newLink.setAttribute("href", "https://www.google.com");
-     newDiv.setAttribute("id", "holder");
+     newLink.setAttribute("href", myDataObject[3][x]);
+     newLink.setAttribute("id", "holder");
      let tag = document.createElement("p");
      tag.setAttribute("id", "results " + x);
      let firstTitle = document.createTextNode(myDataObject[1][x]);
-     document.body.appendChild(newDiv);
-     newDiv.appendChild(tag);
+     document.body.appendChild(newLink);
+     newLink.appendChild(newSpan)
+     newSpan.appendChild(tag);
      tag.appendChild(firstTitle)
      let snippet = document.createTextNode(": " + myDataObject[2][x]);
      tag.appendChild(snippet);
     
    }
  };
+      //first time someone clicks it will only add search results
      if (count == 1) {
-       addElement();
+       addSearchResults();
      }
-      
+  
+      //defines function ro remove old search results
   function removeSearchResults() {
    while (document.getElementById("holder")) {
     document.body.removeChild(document.getElementById("holder"));
 }
-  };     
+  };    
+     //clears out old search results and adds new ones
     if (count > 1) {
+      
       removeSearchResults();
-      addElement();
+      addSearchResults();
     }   
        
     }
@@ -64,10 +70,9 @@ document.getElementById("searchicon").addEventListener("click", function() {
   xhr.send();
     
 
-//when finished this will push the search box to the top of the page once results are returned to give the webpage a cleaner look
+//pushes search box up to the top of the website to make room for results
   document.getElementById("box").style.marginTop = "3%";
 
- 
 });
 
 </script>	
